@@ -1,0 +1,25 @@
+{
+"authors": {
+    "author_id":"Primary key for uniquely identifying authors.",
+    "author_name":"The name of the author.",
+    "birth_date":"The birth date of the author.",
+    "nationality":"The nationality of the author."
+},
+"books": {
+    "book_id":"Primary key for uniquely identifying books.",
+    "title":"The title of the book.",
+    "publication_date":"The date when the book was published.",
+    "isbn":"The International Standard Book Number (ISBN) of the book, unique to each book."
+    },
+"book_authors": {
+    "book_id":"Foreign key referencing the book_id in the Books table, establishing a relationship between books and authors.",
+    "author_id":"Foreign key referencing the author_id in the Authors table, establishing a relationship between books and authors."},
+"genres": {
+    "genre_id":"Primary key for uniquely identifying genres.",
+    "genre_name":"The name of the genre (e.g., fiction, non-fiction, mystery)."
+},
+"book_genres":{
+    "book_id":"Foreign key referencing the book_id in the Books table, establishing a relationship between books and genres.",
+    "genre_id":"Foreign key referencing the genre_id in the Genres table, establishing a relationship between books and genres."
+}
+}

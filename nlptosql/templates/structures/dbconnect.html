@@ -1,0 +1,123 @@
+<div class="modal fade" id="openmysql" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="openmysqldropLabel" aria-hidden="true">
+  <div class="modal-dialog fullmodal">
+    <div class="modal-content">
+      <!-- #ff512fe8 -->
+      <div class="modal-header bg-secondary-subtle">
+        <h1 class="modal-title fs-5" id="openmysqldropLabel">CONNECT MYSQL DATABASE</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="row mx-0 ">
+           <div class="col mx-auto my-3">
+             <div id="append-db-error" class="mb-2">   
+               
+             </div>
+             <form action="" id="db-form">
+               <table class="table table-bordered mb-0">
+                 <tbody>
+                   <tr>
+                     <td class="td1" >HOSTNAME</td>
+                     <td> <input class="form-control" type="text" name="" id="hostname" placeholder="Enter Hostname eg.localhost"></td>
+                   </tr>
+                   <tr>
+                     <td class="td1">USER</td>
+                     <td><input class="form-control" type="text" name="" id="user" placeholder="Enter Username eg.root"></td>
+                   </tr>
+                   <tr>
+                     <td class="td1">PASSWORD</td>
+                     <td><input class="form-control " type="password" name="" id="password1" placeholder="Enter password"></td>
+                   </tr>
+                   <tr>
+                     <td class="td1">PORT NO</td>
+                     <td><input class="form-control" type="text" name="" id="portno" placeholder="Enter Port number"></td>
+                   </tr>
+                   <tr>
+                     <td class="td1">DATABASE</td>
+                     <td><input class="form-control" type="text" name="" id="database" placeholder="Enter Database name"></td>
+                   </tr>
+                   
+                 </tbody>
+               </table>
+               <div class="d-flex justify-content-center gap-2 bg-light border py-2">
+                 <button type="reset" class="s-btn1 bg-secondary ">Reset</button>
+                 <button type="submit" class="s-btn2 bg-primary connectmysql ">Submit <span class="sloader" id="sloader1" style="display: none;"></span></button>
+               </div>
+             </form>
+           </div>
+         </div>
+      </div>
+      <!-- <div class="modal-footer bg-light" id="showmf" style="justify-content:center;display:none;" >
+        <button type="button" class="s-btn3" id="analyzedb" style="background-image: linear-gradient(to bottom right, #FF512F, #DD2476);border-radius: 25px;">
+          ANALYZE DATABASE<span class="sloadera" id="sloader3" style="display:none;"></span>
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="savedb-description" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="savedb-descriptionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen fullmodal" >
+    <div class="modal-content">
+      <div class="modal-header bg-secondary-subtle">
+        <h1 class="modal-title fs-5" id="savedb-descriptionLabel">ANALYZE DATABASE</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <table class="table-bordered table-light mx-auto" >
+          <thead>
+            <tr class="text-center">
+              <th style="width: 300px;padding: 4px;">DESCRIPTION</th>
+              <th style="width: 300px;padding: 4px;">EXAMPLE</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr  >
+              <td class="show-clr-json" style="width: 300px;padding: 4px;">
+                <!-- <textarea name="" id="dexcjson" cols="50" rows="16" class="form-control txt-j" disabled></textarea> -->
+                <div id="dexcjson" contenteditable="false" class="jbox"></div>
+              </td>
+              <td class="show-clr-json" style="width: 300px;padding: 4px;">
+                <!-- <textarea name="" id="exmpljson" cols="50" rows="16" class="form-control txt-j" disabled></textarea> -->
+                <div id="exmpljson" contenteditable="false" class="jbox"></div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <td style="width: 300px; padding: 7px;">
+              <button class="btn btn-primary " id="editdesc">EDIT</button>
+              <button class="btn btn-success" id="savedesc">SAVE</button>
+              <button class="btn btn-danger" id="rdesc">REGENERATE <span class="sloadera" id="sloader4" style="display:none;"></span></button>
+            </td>
+            <td style="width: 300px;padding: 7px;">
+              <button class="btn btn-primary " id="editdexpl">EDIT</button>
+              <button class="btn btn-success" id="saveexpl">SAVE</button>
+              <button class="btn btn-danger" id="rexml">REGENERATE<span class="sloadera" id="sloader5" style="display:none;"></span></button>
+            </td>
+          </tfoot>
+         </table>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

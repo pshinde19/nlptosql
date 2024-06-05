@@ -1,0 +1,32 @@
+"projects": {
+  "ProjectID": "Projectid of type INT (Primary Key)",
+  "ProjectName": "Projectname of type NVARCHAR(100) COLLATE \\"SQL_Latin1_General_CP1_CI_AS\\"",
+  "StartDate": "Startdate of type DATE",
+  "EndDate": "Enddate of type DATE",
+  "Budget": "Budget of type DECIMAL(18, 2)",
+  "ManagerID": "Managerid of type INT (Foreign Key)"
+},
+"managers": {
+  "ManagerID": "Managerid of type INT (Primary Key)",
+  "ManagerName": "Managername of type NVARCHAR(100) COLLATE \\"SQL_Latin1_General_CP1_CI_AS\\"",
+  "DepartmentID": "Departmentid of type INT (Foreign Key references departments.DepartmentID)",
+  "Email": "Email of type NVARCHAR(100) COLLATE \\"SQL_Latin1_General_CP1_CI_AS\\"",
+  "PhoneNumber": "Phonenumber of type NVARCHAR(15) COLLATE \\"SQL_Latin1_General_CP1_CI_AS\\""
+}
+
+Output:
+"projects": {
+  "ProjectID": "Primary key for uniquely identifying projects in projects table with INT as data type.",
+  "ProjectName": "The name of the project with NVARCHAR(100) as data type.",
+  "StartDate": "The start date of the project with DATE as data type.",
+  "EndDate": "The end date of the project with DATE as data type..",
+  "Budget": "The budget allocated for the project with DECIMAL(18, 2) as data type.",
+  "ManagerID": "Foreign key referencing the manager responsible for the project with INT as data type."
+},
+"managers": {
+  "ManagerID": "Primary key for uniquely identifying managers in managers table with INT as data type.",
+  "ManagerName": "The name of the manager with NVARCHAR(100) as data type.",
+  "DepartmentID": "Foreign key referencing the department the manager belongs to with INT as data type.",
+  "Email": "The email address of the manager with NVARCHAR(100) as data type.",
+  "PhoneNumber": "The phone number of the manager with NVARCHAR(15) as data type."
+}

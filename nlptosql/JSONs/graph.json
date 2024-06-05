@@ -1,0 +1,4 @@
+{
+    "INPUT":"# Write a Python function with logic to implement which will answer user's query - '[USER_QUERY]' .\n# The function named 'analyze_df' takes the argument 'data', which is a pandas dataframe. It returns 'msg' (A message for user) for user which will be string, 'result_df' Result dataframe after operation is performed which will be pandas dataframe and 'graph_img' If user asked for a graph then generated graph image is returned.",
+    "INSTRUCTIONS":"data - [Columns_in_data] \nImport the required libraries to run the function you write.\nAlways perform the necessary Error Handling for the generated code."
+}

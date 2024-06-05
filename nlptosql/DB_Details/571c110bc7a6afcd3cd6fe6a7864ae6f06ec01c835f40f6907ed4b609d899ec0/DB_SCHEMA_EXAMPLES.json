@@ -1,0 +1,42 @@
+[
+   {
+      "Answer": "SELECT d.DepartmentName, AVG(d.Salary) AS avg_salary FROM dept d GROUP BY d.DepartmentName;",
+      "Description": "This query calculates the average salary of employees in each department.",
+      "Question": "What is the average salary of employees in each department?",
+      "Tables_used": [
+         "dept"
+      ]
+   },
+   {
+      "Answer": "SELECT d.DepartmentName, SUM(d.Salary) AS total_salary FROM dept d GROUP BY d.DepartmentName;",
+      "Description": "This query calculates the total salary paid to employees in each department.",
+      "Question": "What is the total salary paid to employees in each department?",
+      "Tables_used": [
+         "dept"
+      ]
+   },
+   {
+      "Answer": "SELECT d.DepartmentName, AVG(d.Salary) AS avg_salary FROM dept d GROUP BY d.DepartmentName;",
+      "Description": "This query calculates the average salary of employees in each department.",
+      "Question": "What is the average salary of employees in each department?",
+      "Tables_used": [
+         "dept"
+      ]
+   },
+   {
+      "Answer": "SELECT d.DepartmentName, SUM(d.Salary) AS total_salary FROM dept d GROUP BY d.DepartmentName;",
+      "Description": "This query calculates the total salary paid to employees in each department.",
+      "Question": "What is the total salary paid to employees in each department?",
+      "Tables_used": [
+         "dept"
+      ]
+   },
+   {
+      "Answer": "SELECT d.DepartmentName, COUNT(d.EmployeeID) AS total_employees FROM dept d GROUP BY d.DepartmentName;",
+      "Description": "This query calculates the total number of employees in each department.",
+      "Question": "What is the total number of employees in each department?",
+      "Tables_used": [
+         "dept"
+      ]
+   }
+]

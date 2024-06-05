@@ -1,0 +1,5 @@
+"SalesData": {
+  "Amount": "The amount of the sale with DECIMAL(10, 2) as data type.",
+  "SaleDate": "The date of the sale with DATE as data type.",
+  "SaleID": "Primary key for uniquely identifying sales in SalesData table with INTEGER as data type."
+}

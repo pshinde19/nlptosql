@@ -1,0 +1,7 @@
+{
+  "SalesData": {
+    "Amount": "Amount of type DECIMAL(10, 2)",
+    "SaleDate": "Saledate of type DATE",
+    "SaleID": "Saleid of type INTEGER (Primary Key)"
+  }
+}

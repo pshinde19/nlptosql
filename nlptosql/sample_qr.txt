@@ -1,0 +1,63 @@
+"Instruction_Example": "Generate 5 analytical questions and mssql queries for them based on the given Database schema -"
+
+"Instruction":"""
+            "1. Perform appropriate JOIN to use multiple tables to answer user's query correctly.",
+            "2. If the input query does not contains more than two tables to use then don't use join at that time",
+            "3. Do not use columns of some other table in another table without using appropriate JOIN. For example, If 'ProductName' is required and it's not present in 'Orders' table, first perform appropriate join and then use the 'ProductName' column.",
+            "4. Perform GROUP BY operation on the correct columns. Do not generate your own columns which is not present in the input. Only use the columns present in the input.",
+            "5. Whenever 'REVENUE' or 'SALES' are mentioned in user's query calculated them using correct columns from correct tables using the base formula of 'Price per Unit * Number of Units Sold'. Use appropriate columns from one or multiple table to create it.",
+            "6. Do not create any new information only refer to Table Descriptions and User's Query to get results.",
+            "7. Give the most Optimized Query. ",
+            "8. Use more than one tables to answer the query. If Needed",
+            "9. Use correct date formats for each column wherever provided in the table description.",
+            "10. Correctly Identify which column is present in which table and accordingly use the columns."
+            "11. Do not generate a stored procedure, generate a mssql query",
+            "12. Check the Columns from the given tables to identify 'Primary Key' and then Perform joins. Check the relation of the column before joins operation.",
+            "13. Do not use LIMIT & IN/ALL/ANY/SOME subquery",
+            "14. Generate some Examples related to Revenue Generation/ Sales if available.",
+            "15. Provide me the Output only in this Format.'Answer':'SELECT g.genre_name, COUNT(bg.book_id) AS book_count FROM genres g LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id GROUP BY g.genre_id, g.genre_name;"
+            
+        """
+
+authors": {
+    "author_id":"Primary key for uniquely identifying authors.",
+    "author_name":"The name of the author.",
+    "birth_date":"The birth date of the author.",
+    "nationality":"The nationality of the author."
+},
+"books": {
+    "book_id":"Primary key for uniquely identifying books.",
+    "title":"The title of the book.",
+    "publication_date":"The date when the book was published.",
+    "isbn":"The International Standard Book Number (ISBN) of the book, unique to each book."
+},
+
+"book_authors": {
+    "book_id":"Foreign key referencing the book_id in the Books table, establishing a relationship between books and authors.",
+    "author_id":"Foreign key referencing the author_id in the Authors table, establishing a relationship between books and authors."
+},
+
+"genres": {
+    "genre_id":"Primary key for uniquely identifying genres.",
+    "genre_name":"The name of the genre (e.g., fiction, non-fiction, mystery)."
+},
+
+"book_genres":{
+    "book_id":"Foreign key referencing the book_id in the Books table, establishing a relationship between books and genres.",
+    "genre_id":"Foreign key referencing the genre_id in the Genres table, establishing a relationship between books and genres."
+}
+
+"Question":"How many books belong to each genre?",
+"Answer":"SELECT g.genre_name, COUNT(bg.book_id) AS book_count FROM genres g LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id GROUP BY g.genre_id, g.genre_name;"
+
+"Question":"Which authors have contributed to the most books?",
+"Answer":"SELECT a.author_name, COUNT(ba.book_id) AS book_count FROM authors a LEFT JOIN book_authors ba ON a.author_id = ba.author_id GROUP BY a.author_id, a.author_name ORDER BY book_count DESC;"
+
+"Question":"What are the details of books published in a specific year?",
+"Answer":"SELECT * FROM books WHERE YEAR(publication_date) = 2022;"
+
+"Question":"How many authors from each nationality have books in the library?",
+"Answer":"SELECT a.nationality, COUNT(DISTINCT ba.author_id) AS author_count FROM authors a LEFT JOIN book_authors ba ON a.author_id = ba.author_id GROUP BY a.nationality;"
+
+"Question":"Find the average age of authors when their books were published?",
+"Answer":"SELECT authors.author_name, AVG(YEAR(books.publication_date) - YEAR(authors.birth_date)) AS avg_author_age FROM authors JOIN book_authors ON authors.author_id = book_authors.author_id JOIN books ON book_authors.book_id = books.book_id GROUP BY authors.author_id, authors.author_name;"

@@ -1,0 +1,27 @@
+{
+   "dept": {
+      "DepartmentID": "ID of the department to which the employee belongs",
+      "DepartmentName": "Name of the department to which the employee belongs",
+      "EmployeeID": "Unique ID assigned to each employee in the department",
+      "HireDate": "Date on which the employee was hired in the department",
+      "JobTitle": "Job title of the employee in the department",
+      "ManagerID": "ID of the manager of the department, taken as foreign key",
+      "Salary": "Salary of the employee in the department",
+      "SupervisorID": "ID of the supervisor of the employee, taken as foreign key"
+   },
+   "emp": {
+      "Address": "Address of the employee",
+      "City": "City of the employee",
+      "Country": "Country of the employee",
+      "DateOfBirth": "Date of Birth of the employee",
+      "Email": "Email of the employee",
+      "EmployeeID": "Unique ID assigned to each employee, used to get unique employee",
+      "FirstName": "First name of the employee",
+      "Gender": "Gender of the employee",
+      "LastName": "Last name of the employee",
+      "Nationality": "Nationality of the employee",
+      "PhoneNumber": "Phone number of the employee",
+      "State": "State of the employee",
+      "ZipCode": "Zip Code of the employee"
+   }
+}

@@ -1,0 +1,14 @@
+"Question":"What is the total revenue generated each month?",
+"Answer":"SELECT MONTH(SaleDate) AS Month, YEAR(SaleDate) AS Year, SUM(Amount) AS TotalRevenue FROM SalesData GROUP BY MONTH(SaleDate), YEAR(SaleDate);"
+
+"Question":"Which month had the highest sales revenue?",
+"Answer":"SELECT MONTH(SaleDate) AS Month, YEAR(SaleDate) AS Year, SUM(Amount) AS TotalRevenue FROM SalesData GROUP BY MONTH(SaleDate), YEAR(SaleDate) ORDER BY TotalRevenue DESC LIMIT 1;"
+
+"Question":"How many sales were made on each day of the week?",
+"Answer":"SELECT DATEPART(WEEKDAY, SaleDate) AS DayOfWeek, COUNT(SaleID) AS SalesCount FROM SalesData GROUP BY DATEPART(WEEKDAY, SaleDate);"
+
+"Question":"What is the average amount of each sale?",
+"Answer":"SELECT AVG(Amount) AS AverageSaleAmount FROM SalesData;"
+
+"Question":"Which day of the week has the highest average sale amount?",
+"Answer":"SELECT DATEPART(WEEKDAY, SaleDate) AS DayOfWeek, AVG(Amount) AS AverageSaleAmount FROM SalesData GROUP BY DATEPART(WEEKDAY, SaleDate) ORDER BY AverageSaleAmount DESC LIMIT 1;"

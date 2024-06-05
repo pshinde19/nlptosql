@@ -1,0 +1,65 @@
+<div class="row px-0 mx-0">
+    <div id="show-table-error" class="px-0 col-5 mx-auto" style="">
+
+    </div>
+</div>
+<div class="row px-0 mx-0" style="border-top: 1px solid lightgrey;">
+    <div class="col-3 px-0" style="border-right: 1px solid lightgrey;background: ghostwhite;">
+        <div class="list-table"><div class="db-list"></div></div>
+        <div>
+            <!-- <button class="btn btn-primary w-100 border-0">Anyalyze Database</button> -->
+            <button type="button" class="s-btn3 w-100" id="analyzedb" onclick="analyze(this)">ANALYZE DATABASE
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                  </svg>
+            </button>
+            <!-- <span class="sloadera" id="sloader3" style="display:none;"></span> -->
+        </div>
+    </div>
+    <div class="col-9 px-0">
+        <div class="">
+            <table class="table mb-0">
+                <tr>
+                    <td>
+                        <input type="search" name="" id="userinput" class="form-control" placeholder="Search your queries..." autocomplete="off">
+                    </td>
+                    <td style="text-align: left;vertical-align: middle;width: 100px;border-left: 1px solid lightgrey;"> 
+                    <button id="qsubmit"  style="width: 100px; font-weight: 500;background-color: #323643;padding: 10px 5px;color: white;">Search<i class="bi bi-search ms-2 fw-bold"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="fw-medium mb-2">Generated Query : </p>
+                        <textarea class="form-control myquery" name="" id="" row="3" style="resize: none;" readonly></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="showQloader" style="display: none;">
+                <span class="loader"></span>
+        </div>
+        <div>
+            <nav class="">
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link"></button>
+                  <button class="nav-link active fw-medium" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#nav-div1" type="button" role="tab" aria-controls="nav-tab1" aria-selected="false">Table <i class="bi bi-table"></i></button>
+                  <button class="nav-link  fw-medium" id="nav-tab2" data-bs-toggle="tab" data-bs-target="#nav-div2" type="button" role="tab" aria-controls="nav-tab2" aria-selected="true">Graph <i class="bi bi-clipboard2-data"></i></button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active bg-white position-relative" id="nav-div1" role="tabpanel" aria-labelledby="nav-tab1" tabindex="0">
+                
+                </div>
+                <div class="tab-pane fade bg-white" id="nav-div2" role="tabpanel" aria-labelledby="nav-tab2" tabindex="0" style="height:100%; width:100%; overflow: hidden;">
+                
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+
+
+
+

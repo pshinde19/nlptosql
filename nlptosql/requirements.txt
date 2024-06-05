@@ -1,0 +1,6 @@
+ibm_watson_machine_learning
+flask
+SQLAlchemy
+tqdm
+llama-index
+PyMySQL==1.1.0

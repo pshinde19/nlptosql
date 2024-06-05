@@ -1,0 +1,75 @@
+{
+    "Instruction_Example": "Generate 5 analytical questions and mssql queries for them based on the given Database schema -",
+    "Instruction_Description": "Generate 5 analytical questions and mssql queries for them based on the given Database schema -",
+    "Instruction_NL2SQL": "Consider you are a expert in mssql and you can give correct SQL to fetch data everytime. Now, using the directions and mssql Table Schemas below, convert the user's natural language query to mssql Query -",
+    "Stop_Sequence":[
+        "<end_of_code>"
+    ],
+    "Seperator":"###################################################",
+    "Pointers":{
+        "Steps":[
+            "STEP 1 - Identify tables which will be used to answer user's query.",
+            "STEP 2 - Identify the CORRECT column name from the CORRECT SQL tables which will be used to answer user's query.",
+            "STEP 3 - Identify if any aggregation functions, mathematical operations or SQL clauses like GROUPBY, ORDERBY will be used to answer user's query.",
+            "STEP 4 - Identify how the data is expected to be sorted and according use either ASC or DESC clauses.",
+            "STEP 5 - Perform required JOIN operations between tables to get required data to answer user's query.",
+            "STEP 6 - Design the mssql Select query statement by considering all above steps to correctly answer user's query."
+        ],
+        "Instruction":[
+            "1. Perform appropriate JOIN to use multiple tables to answer user's query correctly.",
+            "2. If there input query does not contains more than two tables to use then don't use join at that time",
+            "3. Do not use columns of some other table in another table without using appropriate JOIN. For example, If 'ProductName' is required and it's not present in 'Orders' table, first perform appropriate join and then use the 'ProductName' column.",
+            "4. Perform GROUP BY operation on the correct columns.",
+            "5. Whenever 'REVENUE' or 'SALES' are mentioned in user's query calculated them using correct columns from correct tables using the base formula of 'Price per Unit * Number of Units Sold'. Use appropriate columns from one or multiple table to create it.",
+            "6. Do not create any new information only refer to DB Schema, Table Descriptions and User's Query to get results.",
+            "7. Give the most Optimized Query. ",
+            "8. Use more than one tables to answer the query. If Needed",
+            "9. Use correct date formats for each column wherever provided in the table description.",
+            "10. Do not generate a stored procedure, generate a mssql query",
+            "11. Do not use LIMIT & IN/ALL/ANY/SOME subquery",
+            "12. Generate some Examples related to Revenue Generation/ Sales if available.",
+            "13. Provide me the Output only in this Format.'Answer':'SELECT g.genre_name, COUNT(bg.book_id) AS book_count FROM genres g LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id GROUP BY g.genre_id, g.genre_name;', \n'Description':'This query provides a count of books for each genre in the library.',\n'Tables_used':['genres', 'book_genres']\n<end_of_code> "
+        ]
+    },
+    "Sample_Schema":[
+
+        "CREATE TABLE authors(author_id INT PRIMARY KEY, author_name NVARCHAR(255) NOT NULL, birth_date DATE, nationality NVARCHAR(50));",
+        "CREATE TABLE books(book_id INT PRIMARY KEY, title NVARCHAR(255) NOT NULL, publication_date DATE,isbn NVARCHAR(20) UNIQUE);",
+        "CREATE TABLE genres(genre_id INT PRIMARY KEY, genre_name NVARCHAR(100) NOT NULL);",
+        "CREATE TABLE book_authors(book_id INT, author_id INT, PRIMARY KEY (book_id, author_id), FOREIGN KEY (book_id) REFERENCES books(book_id), FOREIGN KEY (author_id) REFERENCES authors(author_id));",
+        "CREATE TABLE book_genres(book_id INT, genre_id INT, PRIMARY KEY (book_id, genre_id), FOREIGN KEY (book_id) REFERENCES books(book_id), FOREIGN KEY (genre_id) REFERENCES genres(genre_id));"
+    ],
+    "Sample_Examples":[
+        {
+            "Question":"How many books belong to each genre?",
+            "Answer":"SELECT g.genre_name, COUNT(bg.book_id) AS book_count FROM genres g LEFT JOIN book_genres bg ON g.genre_id = bg.genre_id GROUP BY g.genre_id, g.genre_name;",
+            "Description":"This query provides a count of books for each genre in the library.",
+            "Tables_used":["genres", "book_genres"]
+            
+        },
+        {
+            "Question":"Which authors have contributed to the most books?",
+            "Answer":"SELECT a.author_name, COUNT(ba.book_id) AS book_count FROM authors a LEFT JOIN book_authors ba ON a.author_id = ba.author_id GROUP BY a.author_id, a.author_name ORDER BY book_count DESC;",
+            "Description":"This query identifies authors with the highest number of contributions to books in the library.",
+            "Tables_used":["authors", "book_authors"]
+        },
+        {
+            "Question":"What are the details of books published in a specific year?",
+            "Answer":"SELECT * FROM books WHERE YEAR(publication_date) = 2022;",
+            "Description":"This query retrieves all details of books published in a specific year.",
+            "Tables_used":["books"]
+        },
+        {
+            "Question":"How many authors from each nationality have books in the library?",
+            "Answer":"SELECT a.nationality, COUNT(DISTINCT ba.author_id) AS author_count FROM authors a LEFT JOIN book_authors ba ON a.author_id = ba.author_id GROUP BY a.nationality;",
+            "Description":"This query counts the number of authors from each nationality who have books in the library.",
+            "Tables_used":["authors", "book_authors"]
+        },
+        {
+            "Question":"Find the average age of authors when their books were published?",
+            "Answer":"SELECT authors.author_name, AVG(YEAR(books.publication_date) - YEAR(authors.birth_date)) AS avg_author_age FROM authors JOIN book_authors ON authors.author_id = book_authors.author_id JOIN books ON book_authors.book_id = books.book_id GROUP BY authors.author_id, authors.author_name;",
+            "Description":"This query calculates the average age of authors at the time their books were published.",
+            "Tables_used":["authors", "book_authors", "books"]
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{% extends 'base/base.html'%}
+
+{% block main %}
+<div class="main container-fluid px-0">
+    <div class="main2">
+      <nav class="">
+         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+           <button class="nav-link"></button>
+           <button class="nav-link active fw-medium" id="nav-db-tab" data-bs-toggle="tab" data-bs-target="#nav-db" type="button" role="tab" aria-controls="nav-db" aria-selected="true">Connect <i class="bi bi-gear-wide-connected"></i></button>
+           <!-- <button class="nav-link fw-medium" id="nav-tbl-tab" data-bs-toggle="tab" data-bs-target="#nav-tbl" type="button" role="tab" aria-controls="nav-tbl" aria-selected="false">Table <i class="bi bi-table"></i></button> -->
+           <button class="nav-link fw-medium" id="nav-tbl-tab" data-bs-toggle="tab" data-bs-target="#nav-tbl" type="button" role="tab" aria-controls="nav-tbl" aria-selected="false">Query <i class="bi bi-filetype-sql"></i></button>
+           <!-- <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button> -->
+         </div>
+       </nav>
+       <div class="tab-content" id="nav-tabContent">
+         <div class="tab-pane fade  bd-tab show active bg-white m-center position-relative" id="nav-db" role="tabpanel" aria-labelledby="nav-db-tab" tabindex="0">
+            <div class="row abc123 py-5 mx-0">
+               <div class="col-5">
+                  <div class="master-tabs">
+                        <div class="c-card c1">
+                           <!-- <div class="con_buttons">
+                           </div> -->
+                           <img class="i-fld " src="{{url_for('static',filename='images/logos/excel3.png')}}" alt="no image">
+                           <span>Excel</span>
+                        </div>
+                        <div class="c-card c2" data-bs-toggle="modal" data-bs-target="#openmysql">
+                           <img class="i-fld" src="{{url_for('static',filename='images/logos/mssql2.jpg')}}" alt="no image">
+                           <!-- <div class="con_buttons">
+                           </div> -->
+                           <span>Mssql</span>
+                        </div>               
+                        <div class="c-card c3">
+                           <img class="i-fld" src="{{url_for('static',filename='images/logos/l3.png')}}" alt="no image">
+                           <!-- <div class="con_buttons">
+                           </div> -->
+                           <span>Mongodb</span>
+                        </div>        
+                  </div>
+                  <div class="latestconn my-5" style="display: none;">
+                     <table class="table table-bordered cust-border ">
+                        <tr>
+                           <th class="tbh">Connected </th>
+                           <td class="latdb"></td>
+                        </tr>
+                        <tr>
+                           <th class="tbh">Username</th>
+                           <td class="latdbusername"></td>
+                        </tr>
+                        <tr>
+                           <th class="tbh">Database name</th>
+                           <td class="latdbname"></td>
+                        </tr>
+                     </table>
+                     
+                  </div> 
+               </div>
+            </div>
+           
+            {% include 'structures/dbconnect.html' %}
+            
+         </div>
+         <div class="tab-pane fade bd-tab bg-white position-relative" id="nav-tbl" role="tabpanel" ar ia-labelledby="nav-profile-tab" tabindex="0">
+            {% include 'structures/showtables.html' %}
+         </div>
+         <div class="tab-pane fade bd-tab bg-white position-relative" id="nav-qry" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+            {% include 'structures/querygenerate.html' %}
+         </div>
+         <!-- <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div> -->
+       </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 pb-3 pe-2">
+      <div id="liveToast" class="toast fade " role="alert" aria-live="assertive" aria-atomic="true">
+         <div class="toast-header">
+           <svg id="toastRect" class="bd-placeholder-img rounded me-2 " width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill=""></rect>
+          </svg>
+           <strong class="me-auto">Message</strong>
+           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+         </div>
+         <div class="toast-body">
+           Hello,<span></span>
+         </div>
+      </div>
+   </div>
+</div>
+<script src="https://unpkg.com/export-from-json/dist/umd/index.min.js"></script>
+<!-- <script src="{{url_for('static',filename='js/mychart.js')}}"></script> -->
+<!-- <script src="{{url_for('static',filename='js/raw.js')}}"></script> -->
+<script src="{{url_for('static',filename='js/error.js')}}"></script>
+<script src="{{url_for('static',filename='js/database.js')}}"></script>
+<script>
+
+   function checkUserCookieAndRedirect() {
+      if (!getCookie('user')) {
+         console.log('html js if running');
+         window.location.href = '/';
+      }
+   }
+
+   setInterval(checkUserCookieAndRedirect, 2000);
+
+   function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+         var c = ca[i];
+         while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+   }
+</script>
+
+
+{% endblock %}

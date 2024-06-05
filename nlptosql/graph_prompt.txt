@@ -1,0 +1,5 @@
+1. Based on Dataframe columns generate a python function named analyze_g which takes the argument 'data', which is a pandas dataframe.
+2. This analyze_g function should create graph or charts using numpy,pandas,plotly.graph_objects,plotly.io. Do not want to save the graph image and don't use '.write_image()' as well as '.show()'.
+3. Only return graph object,do not print the object and also do not call the analyze_g function.
+4. Do Perform all the necessary error handling when writing the python function analyze_g.
+5. Input is a Dataframe which is provided below.

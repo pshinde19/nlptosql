@@ -1,0 +1,12 @@
+{
+    "Cache_DB_folder": "Cache_DB",
+    "Cache_DB_filename": "Cache_DB.json",
+    "WMLCred": {
+        "url": "https://us-south.ml.cloud.ibm.com",
+        "apikey": "zHbIGeK7CxMK_XDebJ6EguWwH-X5I4lu1HmWPMdqUs5l"
+    },
+    "WatsonXPID": "5cdfe149-71bb-4a94-90f7-03d2d7a71e7d",
+    "DB_Details": "DB_Details",
+    "DB_DESC_FILENAME": "DB_SCHEMA_DESCRIPTION.json",
+    "DB_EXAMPLE_FILENAME": "DB_SCHEMA_EXAMPLES.json"
+}
